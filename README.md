@@ -10,3 +10,10 @@ You should have `docker-compose` to be installed first (https://docs.docker.com/
 docker-compose build
 docker-compose up -d
 ```
+
+## Configuration
+
+Update `docker-compose.yml` config according to your settings:
+
+- `postfix.environment.maildomain` to change mail domain
+- `strider.environment.SERVER_NAME` to change strider base url

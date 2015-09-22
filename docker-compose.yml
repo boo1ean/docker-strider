@@ -1,0 +1,26 @@
+mongo:
+    container_name: "strider_mongo"
+    build: "./mongo"
+
+postfix:
+    container_name: "strider_postfix"
+    build: './postfix'
+    environment:
+        maildomain: mail.example.com
+        smtp_user: user:pwd
+
+strider:
+    container_name: "strider"
+    build: "./strider"
+    links:
+        - "mongo"
+        - "postfix"
+    environment:
+        DB_URI: mongodb://strider_mongo:27017/strider_test
+        SERVER_NAME: http://localhost:3000
+        SMTP_HOST: strider_postfix
+        SMTP_PORT: 25
+        SMTP_USER: user
+        SMTP_PASS: pwd
+    ports:
+        - "3000:3000"

@@ -1,6 +1,8 @@
 mongo:
     container_name: "strider_mongo"
     build: "./mongo"
+    volumes:
+        - ./mongo_data:/data/db
 
 postfix:
     container_name: "strider_postfix"
